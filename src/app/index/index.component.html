@@ -1,0 +1,21 @@
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Crédito</th>
+      <th>Criado</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="credits.length == 0">
+      <td colspan="4" class="center">Nenhum item foi inserido</td>
+    </tr>    
+    <tr *ngFor="let credit of credits">
+      <td>{{credit.id}}</td>
+      <td>{{credit.name}}</td>
+      <td>{{credit.created}}</td>
+      <td>{{credit.status}}</td>
+    </tr>
+  </tbody>
+</table>

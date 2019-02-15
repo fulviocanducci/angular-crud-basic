@@ -1,0 +1,18 @@
+<form [formGroup]="form">
+  <input type="hidden" formControlName="id" />
+  <div class="field">
+    <label class="label">Crédito</label>
+    <div class="control has-icons-right">
+      <input class="{{form.controls['name'].valid?'input is-success':'input is-danger'}}" type="text" placeholder="Digite o crédito" formControlName="name">
+      <span class="icon is-small is-right" *ngIf="form.controls['name'].valid">
+          <i class="fas fa-check"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="!form.controls['name'].valid">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+    </div>
+  </div>
+  {{form.valid}}
+  <button (click)="addCredit()" [disabled]="form.invalid" class="{{form.valid?'button is-primary':'button is-danger'}}">Adicionar</button>
+</form>
+<!--https://bulma.io/documentation/form/general/-->
