@@ -1,18 +1,43 @@
 <form [formGroup]="form">
   <input type="hidden" formControlName="id" />
-  <div class="field">
-    <label class="label">Crédito</label>
-    <div class="control has-icons-right">
-      <input class="{{form.controls['name'].valid?'input is-success':'input is-danger'}}" type="text" placeholder="Digite o crédito" formControlName="name">
-      <span class="icon is-small is-right" *ngIf="form.controls['name'].valid">
-          <i class="fas fa-check"></i>
-      </span>
-      <span class="icon is-small is-right" *ngIf="!form.controls['name'].valid">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
-    </div>
-  </div>
-  {{form.valid}}
+  <div class="columns">
+    <div class="column is-two-thirds">
+      <div class="field">
+        <label class="label">Crédito:</label>
+        <div class="control has-icons-right">
+          <input class="{{form.controls['name'].valid?'input is-success':'input is-danger'}}" type="text" placeholder="Digite o crédito" formControlName="name">
+          <span class="icon is-small is-right" *ngIf="form.controls['name'].valid">
+              <i class="fas fa-check"></i>
+          </span>
+          <span class="icon is-small is-right" *ngIf="!form.controls['name'].valid">
+              <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+      </div> 
+    </div>      
+    <div class="column is-one-quarter">
+      <div class="field">
+        <label class="label">Criado:</label>
+        <div class="control has-icons-right">
+          <input class="{{form.controls['created'].valid?'input is-success':'input is-danger'}}" type="text" placeholder="Digite o data" formControlName="created" maxlength="10">
+          <span class="icon is-small is-right" *ngIf="form.controls['created'].valid">
+              <i class="fas fa-check"></i>
+          </span>
+          <span class="icon is-small is-right" *ngIf="!form.controls['created'].valid">
+              <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+      </div> 
+    </div> 
+    <div class="column">
+        <div class="field">
+          <label class="label">Status:</label>
+          <label class="checkbox">      
+            <input type="checkbox" formControlName="status">          
+          </label>          
+        </div> 
+      </div> 
+  </div> 
   <button (click)="addCredit()" [disabled]="form.invalid" class="{{form.valid?'button is-primary':'button is-danger'}}">Adicionar</button>
 </form>
 <!--https://bulma.io/documentation/form/general/-->

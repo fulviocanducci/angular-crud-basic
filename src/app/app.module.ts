@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { AddComponent } from './add/add.component';
+import { DateTime } from './utils/datetime';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { AddComponent } from './add/add.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DateTime],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

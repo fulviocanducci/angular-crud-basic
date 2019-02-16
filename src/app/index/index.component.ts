@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
   }
 
   load() {
-    this.request.get('http://localhost:64343/api/credits')
+    this.request.get('credits')
       .then(result => {
         result.data.map((item: Credit) => {
           this.credits.push(new Credit(item.id, item.name, item.status, item.created));

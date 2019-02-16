@@ -4,6 +4,12 @@ import axios, { AxiosRequestConfig } from 'axios';
     providedIn: 'root'
 })
 export class Request {
+    constructor() {
+        axios.defaults.baseURL = 'http://localhost:64343/api/';
+        // http://codeheaven.io/how-to-use-axios-as-your-http-client-pt/
+        // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+        // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+    }
     get(url: string, config: AxiosRequestConfig = null) {
         return axios.get(url, config);
     }

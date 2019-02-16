@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Request } from '../utils/request';
+import { DateTime } from '../utils/datetime';
+import { DatetimeValidation } from '../utils/datetime.validation';
 
 @Component({
   selector: 'app-add',
@@ -11,7 +13,11 @@ export class AddComponent implements OnInit {
   public form: FormGroup;
   public showModal = false;
 
-  constructor(private fb: FormBuilder, private request: Request) {
+  constructor(
+      private fb: FormBuilder,
+      private request: Request,
+      private datetime: DateTime
+    ) {
     this.form = this.fb.group({
       id: [0, Validators.compose([
         Validators.required
@@ -25,22 +31,23 @@ export class AddComponent implements OnInit {
         Validators.required
       ])],
       created: ['', Validators.compose([
-        Validators.nullValidator
+        DatetimeValidation.dateValid
       ])]
     });
   }
 
   ngOnInit() {
+
   }
 
   addCredit() {
     if (this.form.valid) {
       const data = this.form.value;
-      this.request.post('http://localhost:64343/api/credits', data)
+      data.created = this.datetime.formatFromTo(data.created, 'DD/MM/YYYY', 'YYYY-MM-DD');
+      this.request.post('credits', data)
         .then(result => {
           if (result) {
             this.clearInput();
-            console.log(1);
           }
         })
         .catch(error => {
@@ -50,7 +57,9 @@ export class AddComponent implements OnInit {
   }
 
   clearInput() {
-    this.form.get('name').setValue('');
+    this.form.reset();
+    this.form.get('id').setValue(0);
+    this.form.get('status').setValue(true);
   }
 
 }
