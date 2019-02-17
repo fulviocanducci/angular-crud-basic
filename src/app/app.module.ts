@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { AddComponent } from './add/add.component';
 import { DateTime } from './utils/datetime';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DateTime } from './utils/datetime';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [DateTime],
   bootstrap: [AppComponent]

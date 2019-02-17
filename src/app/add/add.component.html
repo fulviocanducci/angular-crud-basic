@@ -19,7 +19,7 @@
       <div class="field">
         <label class="label">Criado:</label>
         <div class="control has-icons-right">
-          <input class="{{form.controls['created'].valid?'input is-success':'input is-danger'}}" type="text" placeholder="Digite o data" formControlName="created" maxlength="10">
+          <input mask="00/00/0000" [showMaskTyped]="false" [dropSpecialCharacters]="false" class="{{form.controls['created'].valid?'input is-success':'input is-danger'}}" type="text" placeholder="Digite o data" formControlName="created" maxlength="10">
           <span class="icon is-small is-right" *ngIf="form.controls['created'].valid">
               <i class="fas fa-check"></i>
           </span>
